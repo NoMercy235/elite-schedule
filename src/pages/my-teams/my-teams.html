@@ -12,18 +12,33 @@
 </ion-header>
 
 <ion-content>
-  <!--<p>Not following any teams currently</p>-->
-  <!--<p>First select a tournament, then you can follow teams from their team page.</p>-->
+  <ion-card *ngIf="!favourites || !favourites.length">
+    <ion-card-header class="my-teams-header">No Followed Teams</ion-card-header>
+    <ion-card-content>
+      <p>Not following any teams currently</p>
+      <p>First select a tournament, then you can follow teams from their team page.</p>
+      <button ion-button full icon-left (click)="goToTournaments()">
+        <ion-icon name="search"></ion-icon>
+        Find a tournament
+      </button>
+    </ion-card-content>
+  </ion-card>
 
-  <ion-list>
-    <ion-list-header>Followed teams</ion-list-header>
-    <button ion-item *ngFor="let fav of favourites" (click)="onFacClick(fav)">
-      <ion-icon name="star"></ion-icon>
-      {{ fav.team.name }}
-      <p>{{ fav.tournamentName }}</p>
-    </button>
-  </ion-list>
-
-  <p>To follow more teams, select a tournament, then you can follow teams from their team page.</p>
-  <button ion-button (click)="goToTournaments()">Go to tournaments</button>
+  <ion-card *ngIf="favourites">
+    <ion-list>
+      <ion-list-header class="my-teams-header">Followed teams</ion-list-header>
+      <button ion-item *ngFor="let fav of favourites" (click)="onFacClick(fav)">
+        <ion-icon name="star"></ion-icon>
+        {{ fav.team.name }}
+        <p>{{ fav.tournamentName }}</p>
+      </button>
+    </ion-list>
+    <ion-card-content>
+      <p>To follow more teams, select a tournament, then you can follow teams from their team page.</p>
+      <button ion-button full icon-left (click)="goToTournaments()">
+        <ion-icon name="search"></ion-icon>
+        Find a tournament
+      </button>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

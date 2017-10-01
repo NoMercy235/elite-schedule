@@ -13,6 +13,7 @@ import { GamePage } from "../game/game";
 export class TeamDetailPage {
   public team: Team;
   public games: any[];
+  public teamStanding: any;
   public tournamentData;
 
   constructor(
@@ -43,6 +44,7 @@ export class TeamDetailPage {
         homeAway: (isTeam1 ? 'vs' : 'at'),
       };
     });
+    this.teamStanding = this.tournamentData.standings.find((s: any) => s.teamId === this.team.id);
   }
 
   getScoreDisplay(isTeam1: boolean, team1Score: number, team2Score: number): string {
