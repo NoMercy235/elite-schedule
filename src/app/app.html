@@ -8,9 +8,15 @@
 
   <ion-content>
     <ion-list>
-      <ion-list-header>Navigate</ion-list-header>
+      <ion-list-header color="secondary">Navigate</ion-list-header>
       <button ion-item menuClose (click)="goHome()">Home</button>
       <button ion-item menuClose (click)="goToTournaments()">Find a tournament</button>
+    </ion-list>
+    <ion-list>
+      <ion-list-header color="secondary">Favourites</ion-list-header>
+      <button ion-item menuClose *ngFor="let fav of favTeams" (click)="goToTeam(fav)">
+        {{ fav.team.name }}
+      </button>
     </ion-list>
   </ion-content>
 

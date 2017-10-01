@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Storage } from "@ionic/storage";
+import { Events } from "ionic-angular";
+import { Globals } from "./globals";
 
 @Injectable()
 export class UserSettingsService {
 
   constructor(
     protected storage: Storage,
+    protected events: Events,
   ) {}
 
   favTeam(team: any, tournamentId: string, tournamentName: string): void {
@@ -15,11 +18,15 @@ export class UserSettingsService {
       tournamentName: tournamentName,
     };
 
-    this.storage.set('team-' + team.id, JSON.stringify(item));
+    this.storage.set('team-' + team.id, JSON.stringify(item)).then(() => {
+      this.events.publish(Globals.EVENTS.userSettings.favChanged, team);
+    });
   }
 
   unfavTeam(team): void {
-    this.storage.remove('team-' + team.id);
+    this.storage.remove('team-' + team.id).then(() => {
+      this.events.publish(Globals.EVENTS.userSettings.favChanged, team);
+    });
   };
 
   isFavTeam(teamId): Promise<boolean> {
