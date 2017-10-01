@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavParams } from 'ionic-angular';
 import { EliteApiService } from "../../app/shared/elite-api.service";
 
 @IonicPage()
@@ -10,7 +10,7 @@ import { EliteApiService } from "../../app/shared/elite-api.service";
 export class StandingsPage {
   public allStandings: any[];
   public standings: any[];
-  public team: any[];
+  public team: any;
 
   public standingCols = [
     { label: 'Wins', name: 'wins' },
@@ -22,17 +22,26 @@ export class StandingsPage {
   ];
 
   constructor(
-    protected navCtrl: NavController,
     protected navParams: NavParams,
     protected eliteApi: EliteApiService,
   ) {
-    this.team = this.navParams.data;
+    this.team = this.navParams.data.team;
     const tournament = this.eliteApi.getTournamentData();
     this.standings = tournament.standings;
+    this.allStandings = tournament.standings;
+    this.filterDivision();
   }
 
   getHeader(record, recordIndex, records): string {
     return (recordIndex === 0 || record.division !== records[recordIndex - 1].division) ? record.division : null;
   }
 
+  filterDivision(event?: any){
+    if(event && event.value === 'all'){
+      this.standings = this.allStandings.slice(0);
+    } else {
+      const division = this.allStandings.find((s: any) => s.teamId === this.team.id).division;
+      this.standings = this.allStandings.filter(s => s.division === division);
+    }
+  }
 }

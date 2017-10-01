@@ -1,5 +1,12 @@
 <ion-header>
   <ion-navbar></ion-navbar>
+
+  <ion-toolbar>
+    <ion-segment>
+      <ion-segment-button value="division" (ionSelect)="filterDivision($event)">Division</ion-segment-button>
+      <ion-segment-button value="all" (ionSelect)="filterDivision($event)">All</ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
