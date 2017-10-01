@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Globals } from "../../app/shared/globals";
-import { TeamDetailPage } from "../team-detail/team-detail";
 import { Team } from "../../app/shared/interfaces";
+import { TeamHomePage } from "../team-home/team-home";
 
 @IonicPage({ name: Globals.PAGE_NAMES.teams })
 @Component({
@@ -21,7 +21,7 @@ export class TeamsPage {
   }
 
   onItemClick(ev: any, team: Team) {
-    this.navCtrl.push(TeamDetailPage, { team: team });
+    this.navCtrl.push(TeamHomePage, { team: team });
   }
 
 }

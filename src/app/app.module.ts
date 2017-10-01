@@ -5,11 +5,7 @@ import { MyApp } from './app.component';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { MyTeamsPageModule } from "../pages/my-teams/my-teams.module";
-import { TournamentsPageModule } from "../pages/tournaments/tournaments.module";
-import { GamePageModule } from "../pages/game/game.module";
-import { TeamDetailPageModule } from "../pages/team-detail/team-detail.module";
-import { TeamsPageModule } from "../pages/teams/teams.module";
+import { PagesModule } from "../pages/pages.module";
 
 @NgModule({
   declarations: [
@@ -18,12 +14,7 @@ import { TeamsPageModule } from "../pages/teams/teams.module";
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp, { preloadModules: false, }),
-    MyTeamsPageModule,
-    GamePageModule,
-    MyTeamsPageModule,
-    TeamDetailPageModule,
-    TournamentsPageModule,
-    TeamsPageModule,
+    PagesModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
