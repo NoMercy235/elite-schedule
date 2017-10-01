@@ -15,7 +15,8 @@ import * as _ from 'lodash';
 export class TeamsPage {
   public allTeams: any[];
   public allTeamDivisions: any[];
-  teams = [];
+  public teams = [];
+  public queryText: string;
 
   constructor(
     protected navCtrl: NavController,
@@ -49,5 +50,17 @@ export class TeamsPage {
         loader.dismiss();
       });
     });
+  }
+
+  updateTeams(){
+    let queryTextLower = this.queryText.toLowerCase();
+    let filteredTeams = [];
+    this.allTeamDivisions.forEach(td => {
+      let teams = td.divisionTeams.filter(t => (<any>t).name.toLowerCase().includes(queryTextLower));
+      if (teams.length) {
+        filteredTeams.push({ divisionName: td.divisionName, divisionTeams: teams });
+      }
+    });
+    this.teams = filteredTeams;
   }
 }
