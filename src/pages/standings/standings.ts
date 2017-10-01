@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { EliteApiService } from "../../app/shared/elite-api.service";
 
-import * as _ from 'lodash';
-
 @IonicPage()
 @Component({
   selector: 'page-standings',
@@ -31,14 +29,10 @@ export class StandingsPage {
     this.team = this.navParams.data;
     const tournament = this.eliteApi.getTournamentData();
     this.standings = tournament.standings;
+  }
 
-    this.allStandings =
-       _.chain(this.standings)
-         .groupBy('division')
-         .toPairs()
-         .map(item => _.zipObject(['divisionName', 'divisionStandings'], item))
-         .value();
-
+  getHeader(record, recordIndex, records): string {
+    return (recordIndex === 0 || record.division !== records[recordIndex - 1].division) ? record.division : null;
   }
 
 }
