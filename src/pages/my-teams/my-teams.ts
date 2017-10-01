@@ -3,7 +3,8 @@ import { IonicPage, LoadingController, NavController } from 'ionic-angular';
 import { TournamentsPage } from "../tournaments/tournaments";
 import { Globals } from "../../app/shared/globals";
 import { EliteApiService } from "../../app/shared/elite-api.service";
-import {TeamHomePage} from "../team-home/team-home";
+import { TeamHomePage } from "../team-home/team-home";
+import { UserSettingsService } from "../../app/shared/user-settings.service";
 
 @IonicPage({ name: Globals.PAGE_NAMES.myTeams })
 @Component({
@@ -11,18 +12,13 @@ import {TeamHomePage} from "../team-home/team-home";
   templateUrl: 'my-teams.html',
 })
 export class MyTeamsPage {
-  public favourites: any[] = [
-    {
-      team: { id: 6182, name: 'HC Elite', coach: 'smt'},
-      tournamentId: '89e13aa2-ba6d-4f55-9cc2-61eba6172c63',
-      tournamentName: 'March Madness Tournament',
-    },
-  ];
+  public favourites: any[] = [];
 
   constructor(
     protected navCtrl: NavController,
     protected loadingCtrl: LoadingController,
     protected eliteApi: EliteApiService,
+    protected userSettings: UserSettingsService,
   ) { }
 
   goToTournaments(): void {
@@ -40,6 +36,12 @@ export class MyTeamsPage {
         this.navCtrl.push(TeamHomePage, { team: fav.team });
         loader.dismiss();
       });
+    });
+  }
+
+  ionViewDidEnter(): void {
+    this.userSettings.getAllFavs().then((data: any[]) => {
+      this.favourites = data;
     });
   }
 }

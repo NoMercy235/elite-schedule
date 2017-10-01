@@ -4,6 +4,7 @@ import { Globals } from "../../app/shared/globals";
 import { Team } from "../../app/shared/interfaces";
 import { EliteApiService } from "../../app/shared/elite-api.service";
 import { GamePage } from "../game/game";
+import { UserSettingsService } from "../../app/shared/user-settings.service";
 
 import * as moment from 'moment';
 
@@ -28,6 +29,7 @@ export class TeamDetailPage {
     protected eliteApi: EliteApiService,
     protected alertCtrl: AlertController,
     protected toastCtrl: ToastController,
+    protected userSettings: UserSettingsService,
   ) {
     this.init();
   }
@@ -55,6 +57,7 @@ export class TeamDetailPage {
     });
     this.allGames = this.games.slice(0);
     this.teamStanding = this.tournamentData.standings.find((s: any) => s.teamId === this.team.id);
+    this.userSettings.isFavTeam(this.team.id).then(val => this.isFollowing = val);
   }
 
   getScoreDisplay(isTeam1: boolean, team1Score: number, team2Score: number): string {
@@ -103,6 +106,7 @@ export class TeamDetailPage {
                 duration: 2000,
               });
               toast.present();
+              this.userSettings.unfavTeam(this.team);
               return true;
             }
           },
@@ -113,6 +117,11 @@ export class TeamDetailPage {
       confirm.present();
     } else {
       this.isFollowing = true;
+      this.userSettings.favTeam(
+        this.team,
+        this.tournamentData.tournament.id,
+        this.tournamentData.tournament.name
+      );
     }
   }
 }

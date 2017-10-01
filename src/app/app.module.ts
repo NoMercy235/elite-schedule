@@ -6,6 +6,7 @@ import { MyApp } from './app.component';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { PagesModule } from "../pages/pages.module";
+import { SharedModule } from "./shared/shared.module";
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { PagesModule } from "../pages/pages.module";
     BrowserModule,
     IonicModule.forRoot(MyApp, { preloadModules: false, }),
     PagesModule,
+    SharedModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [

@@ -18,7 +18,6 @@ export class GamePage {
     protected eliteApi: EliteApiService,
   ) {
     this.game = this.navParams.data.game;
-    console.log(this.game);
   }
 
   onTeamClick(teamId): void {
