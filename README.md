@@ -18,9 +18,22 @@ $ ionic start myTabs tabs
 Then, to run it, cd into `myTabs` and run:
 
 ```bash
-$ ionic cordova platform add ios
-$ ionic cordova run ios
+$ ionic cordova platform add android
+$ ionic cordova run android
 ```
 
-Substitute ios for android if not on a Mac.
+Substitute android for ios as needed.
 
+To generate the resource files run:
+
+```bash
+ionic cordova resources android
+ionic cordova resources android --splash
+```
+
+To generate the .apk file run:
+
+```bash
+$ ionic cordova build android
+```
+Add  `--release `  flag for the release version.

@@ -2,5 +2,7 @@
   "name": "ionic-tabs-app",
   "app_id": "3456f312",
   "type": "ionic-angular",
-  "integrations": {}
+  "integrations": {
+    "cordova": {}
+  }
 }
