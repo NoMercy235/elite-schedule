@@ -1,9 +1,16 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-title>Teams</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-
+  <ion-list>
+    <button ion-item (click)="onItemClick()">
+      HC Elite
+    </button>
+    <button ion-item (click)="onItemClick()">
+      Team Takeover
+    </button>
+  </ion-list>
 </ion-content>

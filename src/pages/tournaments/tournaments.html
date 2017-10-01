@@ -1,9 +1,16 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Tournaments</ion-title>
+    <ion-title color="primary">Select a tournament</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-
+  <ion-list>
+    <button ion-item (click)="onItemClick()">
+      Match Madness TOurnament
+    </button>
+    <button ion-item (click)="onItemClick()">
+      Summer Showdown
+    </button>
+  </ion-list>
 </ion-content>

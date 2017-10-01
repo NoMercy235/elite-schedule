@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Globals } from "../../app/shared/globals";
+import { TeamDetailPage } from "../team-detail/team-detail";
 
 @IonicPage({ name: Globals.PAGE_NAMES.teams })
 @Component({
@@ -12,8 +13,8 @@ export class TeamsPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad TeamsPage');
+  onItemClick() {
+    this.navCtrl.push(TeamDetailPage)
   }
 
 }
