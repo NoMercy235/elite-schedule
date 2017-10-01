@@ -4,13 +4,10 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
   <ion-list>
-    <button ion-item (click)="onItemClick()">
-      Match Madness Tournament
-    </button>
-    <button ion-item (click)="onItemClick()">
-      Summer Showdown
+    <button ion-item *ngFor="let tournament of tournaments" (click)="onItemClick(tournament)">
+      {{ tournament.name }}
     </button>
   </ion-list>
 </ion-content>

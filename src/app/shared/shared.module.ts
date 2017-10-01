@@ -1,10 +1,18 @@
 import { NgModule } from '@angular/core';
+import { EliteApiService } from "./elite-api.service";
+import { HttpModule } from "@angular/http";
 
 @NgModule({
-  imports: [],
-  exports: [],
+  imports: [
+    HttpModule,
+  ],
+  exports: [
+    HttpModule,
+  ],
   declarations: [],
-  providers: [],
+  providers: [
+    EliteApiService,
+  ],
 })
 export class SharedModule {
 }

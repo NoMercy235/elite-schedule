@@ -4,9 +4,9 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
   <ion-list>
-    <button ion-item *ngFor="let team of teams" (click)="onItemClick($event, team)">
+    <button ion-item *ngFor="let team of teams" (click)="onItemClick(team)">
       {{ team.name }}
     </button>
   </ion-list>

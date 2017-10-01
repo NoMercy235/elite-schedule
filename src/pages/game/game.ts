@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage } from 'ionic-angular';
 import { Globals } from "../../app/shared/globals";
 
 @IonicPage({ name: Globals.PAGE_NAMES.game })
@@ -9,11 +9,6 @@ import { Globals } from "../../app/shared/globals";
 })
 export class GamePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad GamePage');
-  }
+  constructor() {}
 
 }

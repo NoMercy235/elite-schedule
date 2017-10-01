@@ -11,11 +11,12 @@ import { Team } from "../../app/shared/interfaces";
 export class TeamDetailPage implements OnInit {
   public team: Team;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  constructor(
+    protected navParams: NavParams
+  ) {}
 
   ngOnInit(): void {
     this.team = this.navParams.data.team;
-    console.log(this.team)
   }
 
 }
