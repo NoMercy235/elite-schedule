@@ -7,7 +7,7 @@ import 'rxjs';
 @Injectable()
 export class EliteApiService {
   private baseUrl: string = 'https://elite-schedule-app-64355.firebaseio.com/';
-  public currentTournament: any = {};
+  private currentTournament: any = {};
 
   constructor(
     protected http: Http
@@ -26,5 +26,9 @@ export class EliteApiService {
         this.currentTournament = res.json();
         return this.currentTournament;
       });
+  }
+
+  getTournamentData(): any {
+    return this.currentTournament;
   }
 }

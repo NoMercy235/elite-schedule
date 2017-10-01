@@ -17,16 +17,17 @@ export class TeamsPage {
     protected navCtrl: NavController,
     protected navParams: NavParams,
     protected eliteApi: EliteApiService,
-  ) { }
+  ) {
+    this.init();
+  }
 
   onItemClick(team: Team) {
     this.navCtrl.push(TeamHomePage, { team: team });
   }
 
-  ionViewDidLoad(): void {
+  init(): void {
     const selectedTournament = this.navParams.data.tournament;
     this.eliteApi.getTournament(selectedTournament.id).subscribe((tournament: any) => {
-      console.log(tournament);
       this.teams = tournament.teams;
     });
   }
